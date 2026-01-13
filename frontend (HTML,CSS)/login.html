@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RapidCare Ambulance Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #f6f7fb;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-box {
+      background: #fff;
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.07);
+      text-align: center;
+      position: relative;
+      max-width: 400px;
+      width: 100%;
+    }
+    .logo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 9px rgba(0,0,0,0.09);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    .logo img {
+      width: 110px;
+      background-image: url("logo.jpg");
+
+    }
+    h2 {
+      margin-bottom: 0.2rem;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #152238;
+    }
+    .login-box p {
+      color: #64748b;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+   <!-- .google-btn {
+      width: 100%;
+      margin-bottom: 1.2rem;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #eaeaea;
+      font-size: 1rem;
+      color: #152238;
+      cursor: pointer;
+      margin-top: 1rem;
+      font-weight: 500;
+      transition: box-shadow 0.2s;
+    }
+    -->
+    .google-btn:hover {
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    .divider {
+      margin: 1rem 0;
+      color: #bfc6d1;
+      font-weight: 600;
+      position: relative;
+      text-align: center;
+    }
+    .divider:before,
+    .divider:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background: #e5e9ef;
+    }
+    .divider:before { left: 0; }
+    .divider:after { right: 0; }
+    .form-group {
+      text-align: left;
+      margin-bottom: 1.1rem;
+    }
+    label {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #152238;
+      margin-bottom: 0.1rem;
+      display: block;
+    }
+    input[type="text"], input[type="tel"], input[type="password"], input[type="email"] {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 8px;
+      border: 1px solid #eaeaea;
+      font-size: 1rem;
+      margin-top: 0.25rem;
+      background: #f6f7fb;
+      transition: border-color 0.2s;
+    }
+    input:focus {
+      border-color: #2563eb;
+      outline: none;
+    }
+    .sign-in-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      background: #152238;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+      font-size: 0.96rem;
+    }
+    .footer-links a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    .emergency-btn {
+      position: absolute;
+      width: 88%;
+      margin-bottom: 1.2rem;
+      top: -35px;
+      right: 22px;
+      display: flex;
+      margin-top: 20rem;
+      align-items: center;
+      justify-content: center;
+      background: #ef4040;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 12px;
+      border-radius: 22px;
+      border: 1px solid;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(255,64,64,0.18);
+      transition: background 0.2s;
+      z-index: 2;
+    }
+    .emergency-btn:hover {
+      background: #c42323;
+    }
+    @media (max-width: 600px) {
+      .login-box {
+        padding: 1rem;
+      }
+      .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+  <script>
+    function goEmergency() {
+      window.location.href = "index.html";
+    }
+    function handleLogin(e) {
+      e.preventDefault();
+      // Gather the name and phone number
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      if (!name || !phone) {
+        alert("Please enter your Name and Phone Number.");
+        return;
+      }
+      // Proceed with your login logic here
+      alert("Login successful!\nName: " + name + "\nPhone: " + phone);
+      // Redirect if needed
+      // window.location.href = "/dashboard";
+    }
+    function googleLogin() {
+      alert("Google Login Clicked"); 
+      // Implement Google login logic
+      // window.location.href = "YOUR_GOOGLE_LOGIN_URL";
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="login-box">
+      <button class="emergency-btn" onclick="goEmergency()">EMERGENCY</button>
+      <div class="logo">
+        <img src="logo.jpg" alt="RapidCare Logo" />
+      </div>
+      <h2>Welcome to RapidCare<br>Ambulance</h2>
+      <p>Sign in to continue</p>
+      <button class="google-btn" onclick="googleLogin()">
+        <img src="quick aid." style="margin-right:8px;vertical-align: middle;"  />
+        
+      </button>
+      <div class="divider">OR</div>
+      <form onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="Enter Phone Number" required pattern="[0-9]{10}">
+        </div>
+        <button type="submit" class="sign-in-btn">Sign in</button>
+        <div style="text-align:center; margin-top: 1.2rem; font-size:1rem; color:#64748b;">
+  Are you a driver? 
+  <a href="driver login.html" style="color:#2563eb; font-weight:600; text-decoration:none;">Driver Login</a>
+</div>
+      </form>
+      <div class="footer-links">
+        
+       
+      </div>
+    </div>
+  </div>
+</body>
+</html>

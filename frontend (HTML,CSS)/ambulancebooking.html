@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambulance Booking - RapidCare</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f8ff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .success-box {
+      background: #e7f9ee;
+      border: 1px solid #b2f0c0;
+      color: #2a8a47;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 8px;
+      text-align: center;
+      max-width: 700px;
+    }
+
+    .success-box h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .tracking-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      margin: 20px auto;
+      max-width: 700px;
+    }
+
+    .tracking-card h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #1d3557;
+    }
+
+    #map {
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .eta {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      font-size: 16px;
+      color: #1d3557;
+      font-weight: bold;
+    }
+
+    .details-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      margin: 20px auto;
+      max-width: 700px;
+    }
+
+    .details-card h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #1d3557;
+    }
+
+    .driver-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .driver-info img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+
+    .driver-details {
+      font-size: 15px;
+      color: #333;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+      margin: 5px;
+    }
+
+    .btn-primary {
+      background: #1c5ed6;
+      color: white;
+    }
+
+    .btn-danger {
+      background: #e63946;
+      color: white;
+    }
+
+    .btn-outline {
+      background: #fff;
+      border: 1px solid #ccc;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Success Message -->
+  <div class="success-box">
+    <h2>✅ Ambulance Booked Successfully!</h2>
+    <p>Emergency services are on their way</p>
+  </div>
+
+  <!-- Live Tracking -->
+  <div class="tracking-card">
+    <h3>📍 Live Tracking</h3>
+    <div id="map"></div>
+    <div class="eta">
+      <span>Estimated Arrival:</span>
+      <span>15 min</span>
+    </div>
+  </div>
+
+  <!-- Ambulance Details -->
+  <div class="details-card">
+    <h3>🚑 Ambulance Details</h3>
+    <div class="driver-info">
+      <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Driver">
+      <div class="driver-details">
+        <b>Driver Name:</b> John Doe <br>
+        <b>Ambulance #:</b> DL01AB1234 <br>
+        <span style="color:green;font-weight:bold;">✔ Verified</span> | ⭐ 4.9
+      </div>
+    </div>
+    <button class="btn btn-primary">📞 Call Driver</button>
+    <button class="btn btn-outline">View All Bookings</button>
+    <button class="btn btn-danger">Cancel Booking</button>
+  </div>
+
+  <!-- Google Maps API -->
+  <script>
+    function initMap() {
+      const driverLocation = { lat: 28.6139, lng: 77.2090 }; // Example: New Delhi
+      const patientLocation = { lat: 28.7041, lng: 77.1025 }; // Example: Patient Location
+
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 12,
+        center: driverLocation,
+      });
+
+      const directionsService = new google.maps.DirectionsService();
+      const directionsRenderer = new google.maps.DirectionsRenderer();
+      directionsRenderer.setMap(map);
+
+      directionsService.route(
+        {
+          origin: driverLocation,
+          destination: patientLocation,
+          travelMode: google.maps.TravelMode.DRIVING,
+        },
+        (response, status) => {
+          if (status === "OK") {
+            directionsRenderer.setDirections(response);
+          } else {
+            alert("Directions request failed due to " + status);
+          }
+        }
+      );
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile, Emergency & Medical Info</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #f7fafd;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .main-container {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 0 16px;
+    }
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #152238;
+      margin-bottom: 8px;
+      margin-top: 0;
+    }
+    .section-desc {
+      color: #64748b;
+      font-size: 1.15rem;
+      margin-bottom: 32px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      padding: 32px 28px 24px 28px;
+      margin-bottom: 32px;
+      border: 1px solid #ececec;
+    }
+    .profile-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    .profile-title {
+      display: flex;
+      align-items: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #152238;
+    }
+    .profile-title .icon-user {
+      font-size: 2rem;
+      margin-right: 12px;
+      color: #2563eb;
+      vertical-align: middle;
+    }
+    .edit-btn {
+      background: #152238;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 24px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .edit-btn:hover {
+      background: #2563eb;
+    }
+    .profile-row {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .profile-col {
+      flex: 1;
+      min-width: 0;
+    }
+    .info-label {
+      font-weight: 600;
+      color: #152238;
+      margin-bottom: 6px;
+      font-size: 1.07rem;
+      display: block;
+    }
+    .info-value {
+      background: #f7f8fa;
+      border-radius: 10px;
+      padding: 16px 18px;
+      color: #64748b;
+      font-size: 1.15rem;
+      margin-bottom: 18px;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .profile-icon-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: #152238;
+      margin-bottom: 6px;
+      font-size: 1.07rem;
+    }
+    .profile-icon-label .icon-phone {
+      font-size: 1.1rem;
+      color: #64748b;
+    }
+    .profile-icon-label .icon-location {
+      font-size: 1.1rem;
+      color: #64748b;
+    }
+    .account-status-row {
+      background: #f1f7fe;
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 12px;
+    }
+    .account-status-label {
+      font-weight: 600;
+      color: #152238;
+      font-size: 1.13rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .account-status-value {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      color: #152238;
+      font-size: 1.13rem;
+      margin-left: auto;
+      gap: 8px;
+    }
+    .account-status-value .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #22c55e;
+      display: inline-block;
+    }
+    .card-title {
+      display: flex;
+      align-items: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #152238;
+      margin-bottom: 6px;
+    }
+    .card-title .icon {
+      font-size: 2rem;
+      margin-right: 12px;
+      vertical-align: middle;
+    }
+    .card-title .icon-danger {
+      color: #ef4040;
+    }
+    .card-title .icon-heart {
+      color: #ef4040;
+    }
+    .card-desc {
+      color: #64748b;
+      font-size: 1.07rem;
+      margin-bottom: 22px;
+    }
+    @media (max-width: 700px) {
+      .main-container {
+        max-width: 98vw;
+        padding: 0 4vw;
+      }
+      .card {
+        padding: 18px 10px 14px 10px;
+      }
+      .profile-title, .card-title {
+        font-size: 1.2rem;
+      }
+      .info-value, .account-status-row {
+        font-size: 1rem;
+        padding: 10px 8px;
+      }
+      .profile-row {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <!-- Profile Section -->
+    <h1 class="section-title">My Profile</h1>
+    <div class="section-desc">
+      Manage your account information and emergency contacts
+    </div>
+    <div class="card">
+      <div class="profile-header">
+        <div class="profile-title">
+          <span class="icon-user">&#128100;</span>
+          Profile Information
+        </div>
+        <button class="edit-btn">Edit Profile</button>
+      </div>
+      <div class="profile-row">
+        <div class="profile-col">
+          <label class="info-label">Full Name</label>
+          <div class="info-value">Apurva Pandya</div>
+        </div>
+        <div class="profile-col">
+          <label class="info-label">Email</label>
+          <div class="info-value">apurvapandya5492@gmail.com</div>
+        </div>
+      </div>
+      <div>
+        <label class="profile-icon-label">
+          <span class="icon-phone">&#128222;</span>
+          Phone Number
+        </label>
+        <div class="info-value">Not provided</div>
+      </div>
+      <div>
+        <label class="profile-icon-label">
+          <span class="icon-location">&#128205;</span>
+          Address
+        </label>
+        <div class="info-value">Not provided</div>
+      </div>
+      <div class="account-status-row">
+        <span class="account-status-label">
+          &#x2714; Account Status
+        </span>
+        <span class="account-status-value">
+          <span class="status-dot"></span>
+          Verified
+        </span>
+      </div>
+    </div>
+    <!-- Emergency Contact Card -->
+    <div class="card">
+      <div class="card-title">
+        <span class="icon icon-danger">&#9888;</span>
+        Emergency Contact
+      </div>
+      <div class="card-desc">
+        This person will be contacted in case of emergency
+      </div>
+      <div>
+        <label class="info-label">Contact Name</label>
+        <div class="info-value">Not provided</div>
+      </div>
+      <div>
+        <label class="info-label">Contact Phone</label>
+        <div class="info-value">Not provided</div>
+      </div>
+    </div>
+    <!-- Medical Information Card -->
+    <div class="card">
+      <div class="card-title">
+        <span class="icon icon-heart">&#10084;</span>
+        Medical Information
+      </div>
+      <div class="card-desc">
+        Important medical conditions or allergies
+      </div>
+      <div>
+        <label class="info-label">Medical Conditions / Allergies</label>
+        <div class="info-value">No medical conditions reported</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

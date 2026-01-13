@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RapidCare - Emergency Ambulance</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8fbff;
+      display: flex;
+    }
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: #fff;
+      border-right: 1px solid #e5e5e5;
+      height: 100vh;
+      padding: 20px 0;
+      position: fixed;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      font-weight: bold;
+      color: #d32f2f;
+      font-size: 18px;
+    }
+    .logo img {
+      width: 30px;
+      margin-right: 10px;
+    }
+    .nav {
+      margin-top: 20px;
+      padding: 0;
+      list-style: none;
+    }
+    .nav li {
+      padding: 12px 20px;
+      cursor: pointer;
+      color: #444;
+      font-size: 15px;
+    }
+    .nav li:hover {
+      background: #f0f4f8;
+    }
+    .status {
+      margin-top: 30px;
+      padding: 0 20px;
+      font-size: 14px;
+    }
+    .verified {
+      color: #2e7d32;
+      background: #e8f5e9;
+      padding: 2px 8px;
+      border-radius: 5px;
+      font-size: 12px;
+    }
+   /* ...existing code... */
+.profile {
+  position: absolute;
+  bottom: 20px;
+  width: 200px;         /* Match the width of the name area */
+  padding: 0 20px;
+  left: 0;              /* Align with sidebar */
+}
+.profile p {
+  margin: 5px 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+.logout {
+  margin-top: 5px;
+  background: #f5f5f5;
+  padding: 6px 0;       /* Remove left/right padding */
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;          /* Make button full width of .profile */
+  box-sizing: border-box;
+}
+.logout:hover {
+  background: #e0e0e0;
+}
+/* ...existing code... */
+    /* Main Content */
+    .main {
+      margin-left: 240px;
+      padding: 30px;
+      flex: 1;
+    }
+    .main h1 {
+      font-size: 24px;
+      margin: 0;
+      color: #222;
+    }
+    .main p {
+      color: #666;
+      margin: 5px 0 20px;
+    }
+    .alert {
+      background: #fdecea;
+      color: #b71c1c;
+      padding: 12px;
+      border: 1px solid #f5c6cb;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #f1f1f1;
+      margin-bottom: 20px;
+    }
+    .card h2 {
+      font-size: 20px;
+      margin: 0 0 15px;
+      color: #b71c1c;
+      display: flex;
+      align-items: center;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      outline: none;
+    }
+    .form-group textarea {
+      resize: none;
+      height: 70px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: #d32f2f;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .sidebar-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  color: #222;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.sidebar-link:hover {
+  background: #f6f6fa;
+  color: #3861fb;
+}
+.icon {
+  margin-right: 12px;
+  font-size: 1.2em;
+}
+
+    .btn:hover {
+      background: #b71c1c;
+    }
+    .info-cards {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .info-card {
+      flex: 1;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid #f1f1f1;
+    }
+    .info-card h3 {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    .info-card p {
+      font-size: 13px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">
+      🚑 RapidCare
+    </div>
+    
+    <ul class="nav">
+
+      <li>
+        <a href="profile.html" class="sidebar-link">
+          <span class="icon">👤</span>
+          Profile
+        </a>
+      </li>
+      <li>
+        <a href="booking.html" class="sidebar-link">
+          <span class="icon">🚑</span>
+          Booking
+        </a>
+      </li>
+      <li>
+        <a href="my-trips.html" class="sidebar-link">
+          <span class="icon">📍</span>
+          My Trips
+        </a>
+      </li>
+      <li>
+        <a href="admin-dashboard.html" class="sidebar-link">
+          <span class="icon">🛡️</span>
+          Admin Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="manage-drivers.html" class="sidebar-link">
+          <span class="icon">👥</span>
+          Manage Drivers
+        </a>
+      </li>
+    </ul>
+  </div>
+
+    </li>    
+  </ul>
+</div>
+
+    <div class="status">
+      <p>Account Status: <span class="verified">Verified</span></p>
+      <p>● Online</p>
+    </div>
+    <div class="profile">
+      <p><b>Apurva Pandya</b></p>
+      
+      <div class="logout">Logout</div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+   <script>
+document.getElementById('signInForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+
+    const response = await fetch('/api/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone })
+    });
+    const data = await response.json();
+    if (data.success) {
+        window.location.href = '/index.html'; // Redirect to main page
+    } else {
+        alert("sign in failed: " + (data.message || "Unknown error"));
+    }
+});
+</script>
+<script>
+  document.querySelector('.logout').addEventListener('click', function() {
+    // Clear authentication info (if any)
+    localStorage.clear();
+    sessionStorage.clear();
+    // Redirect to login page
+    window.location.href = 'login.html';
+  });
+</script>
+
+  <div class="main">
+    <h1>Emergency Ambulance</h1>
+    <p>Get help immediately - professional care is just one tap away</p>
+
+    <div class="alert">
+      ⚠️ Unable to get your location. Please enable location services.
+    </div>
+
+    <div class="card">
+      <h2>🚨 Emergency Booking</h2>
+      <div class="form-group">
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+        <label>Pickup Location</label>
+        <input type="text" id="pickup-location" value="BHOPAL, MP, INDIA" disabled>
+        <script>
+function fillLocationField(address) {
+  document.getElementById('pickup-location').value = address;
+}
+
+function getAddressFromCoords(lat, lng) {
+  const geocoder = new google.maps.Geocoder();
+  const latlng = { lat: parseFloat(lat), lng: parseFloat(lng) };
+  geocoder.geocode({ location: latlng }, function(results, status) {
+    if (status === 'OK' && results[0]) {
+      fillLocationField(results[0].formatted_address);
+      document.querySelector('.alert').style.display = 'none';
+    } else {
+      document.querySelector('.alert').textContent = "⚠️ Unable to get your address from location.";
+    }
+  });
+}
+
+function detectLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
+        getAddressFromCoords(position.coords.latitude, position.coords.longitude);
+      },
+      function(error) {
+        document.querySelector('.alert').textContent = "⚠️ Unable to get your location. Please enable location services.";
+      }
+    );
+  } else {
+    document.querySelector('.alert').textContent = "⚠️ Geolocation is not supported by your browser.";
+  }
+}
+
+// Run location detection on page load
+window.onload = detectLocation;
+</script>
+      </div>
+      <div class="form-group">
+        <label>Emergency Level</label>
+        <select>
+          <option>Low - Basic support needed</option>
+          <option selected>Medium - Urgent care needed</option>
+          <option>High - Critical emergency</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Patient Condition</label>
+        <input type="text" placeholder="Brief description (e.g., chest pain, accident, fever)">
+      </div>
+      <div class="form-group">
+        <label>Additional Notes</label>
+        <textarea placeholder="Any specific instructions or requirements"></textarea>
+      </div>
+      <button class="btn" id="book-emergency-btn">🚑 Book Emergency Ambulance</button>
+      <script>
+  document.getElementById('book-emergency-btn').addEventListener('click', function() {
+    window.location.href = 'ambulancebooking.html';
+  });
+</script>
+    </div>
+
+    <!-- Info Cards -->
+    <div class="info-cards">
+      <div class="info-card">
+        <h3>⏱ Fast Response</h3>
+        <p>Average response time under 8 minutes</p>
+      </div>
+      <div class="info-card">
+        <h3>✅ Verified Providers</h3>
+        <p>All ambulances and drivers are verified</p>
+      </div>
+      <div class="info-card">
+        <h3>📡 Real-time Tracking</h3>
+        <p>Track your ambulance in real-time</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
